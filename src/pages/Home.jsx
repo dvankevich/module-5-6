@@ -1,24 +1,8 @@
 import { Container, CountryList, Heading, Loader, Section } from 'components';
-import { useEffect, useState } from 'react';
-import { getCountries } from 'service/countryApi';
+import useFetchCountries from '../hooks/useFetchCountries';
+
 const Home = () => {
-  const [countries, setCountries] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const data = await getCountries();
-        setCountries(data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  const { countries, isLoading, error } = useFetchCountries();
   return (
     <Section>
       <Container>
