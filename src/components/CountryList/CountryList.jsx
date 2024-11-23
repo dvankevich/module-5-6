@@ -3,7 +3,7 @@ import { Grid, GridItem } from '..';
 
 export const CountryList = ({ countries }) => {
   const location = useLocation();
-  // console.log(location);
+  console.log(location);
 
   return (
     <Grid>
