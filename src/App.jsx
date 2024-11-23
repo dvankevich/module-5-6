@@ -1,9 +1,11 @@
-import { Header, Heading, Loader } from 'components';
+import { Header, Loader } from 'components';
 //import { Home } from 'pages/Home';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 const Home = lazy(() => import('pages/Home'));
+const SearchCountry = lazy(() => import('pages/SearchCountry'));
+const Country = lazy(() => import('pages/Country'));
 
 // У застосунку повинні бути такі маршрути.
 
@@ -18,6 +20,9 @@ export const App = () => {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/country" element={<SearchCountry />} />
+          <Route path="/country/:countryId" element={<Country />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Suspense>
     </>
